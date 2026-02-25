@@ -8,21 +8,13 @@ namespace CGD.API.Controllers
 {
     [ApiController]
     [Route("groups")]
-    public class GroupsController : ControllerBase
+    public class GroupsController(IGroupService groupService) : ControllerBase
     {
-        private readonly IGroupService _groupService;
-
-        public GroupsController(IGroupService groupService)
-        {
-            _groupService = groupService;
-        }
-
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GroupDto>>> GetAll()
         {
             var userId = GetUserId();
-            var groups = await _groupService.GetAllAsync(userId);
+            var groups = await groupService.GetAllAsync(userId);
             return Ok(groups);
         }
 
@@ -31,7 +23,7 @@ namespace CGD.API.Controllers
         public async Task<ActionResult<GroupDto>> GetById(Guid id)
         {
             var userId = GetUserId();
-            var group = await _groupService.GetByIdAsync(id, userId);
+            var group = await groupService.GetByIdAsync(id, userId);
             if (group == null) return NotFound();
             return Ok(group);
         }
@@ -41,7 +33,7 @@ namespace CGD.API.Controllers
         public async Task<ActionResult<GroupDto>> Create([FromBody] GroupCreateDto dto)
         {
             var userId = GetUserId();
-            var group = await _groupService.CreateAsync(dto, userId);
+            var group = await groupService.CreateAsync(dto, userId);
             return CreatedAtAction(nameof(GetById), new { id = group.Id }, group);
         }
 
@@ -50,7 +42,7 @@ namespace CGD.API.Controllers
         public async Task<ActionResult<GroupDto>> Update(Guid id, [FromBody] UpdateGroupDto dto)
         {
             var userId = GetUserId();
-            var group = await _groupService.UpdateAsync(id, dto.Name, userId);
+            var group = await groupService.UpdateAsync(id, dto.Name, userId);
             if (group == null) return NotFound();
             return Ok(group);
         }
@@ -59,7 +51,7 @@ namespace CGD.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _groupService.DeleteAsync(id);
+            await groupService.DeleteAsync(id);
             return NoContent();
         }
 
@@ -67,21 +59,21 @@ namespace CGD.API.Controllers
         public async Task<ActionResult> AddUserToGroup(Guid groupId, Guid userId)
         {
             var groupAdmin = GetUserId();
-            await _groupService.AddUserToGroupAsync(groupId, groupAdmin, userId);
+            await groupService.AddUserToGroupAsync(groupId, groupAdmin, userId);
             return NoContent();
         }
 
         [HttpDelete("{groupId}/users/{userId}")]
         public async Task<ActionResult> RemoveUserFromGroup(Guid groupId, Guid userId)
         {
-            await _groupService.RemoveUserFromGroupAsync(groupId, userId);
+            await groupService.RemoveUserFromGroupAsync(groupId, userId);
             return NoContent();
         }
 
         [HttpGet("user/{userId}")]
         public async Task<ActionResult<IEnumerable<GroupDto>>> GetGroupsByUser(Guid userId)
         {
-            var groups = await _groupService.GetGroupsByUserIdAsync(userId);
+            var groups = await groupService.GetGroupsByUserIdAsync(userId);
             return Ok(groups);
         }
 

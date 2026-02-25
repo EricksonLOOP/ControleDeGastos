@@ -11,14 +11,9 @@ public interface IJwtTokenService
     string GenerateToken(Guid userId, string email, string role, int expirationMinutes);
 }
 
-public class JwtTokenService : IJwtTokenService
+public class JwtTokenService(IOptions<JwtSettings> jwtOptions) : IJwtTokenService
 {
-    private readonly JwtSettings _jwtSettings;
-
-    public JwtTokenService(IOptions<JwtSettings> jwtOptions)
-    {
-        _jwtSettings = jwtOptions.Value;
-    }
+    private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
     public string GenerateToken(Guid userId, string email, string role, int expirationMinutes)
     {

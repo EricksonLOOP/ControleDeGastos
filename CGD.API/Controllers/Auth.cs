@@ -10,20 +10,15 @@ namespace ControleDeGastos.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthController : ControllerBase
+public class AuthController(
+    ILogger<AuthController> logger,
+    IAuthServices authServices,
+    IJwtTokenService jwtTokenService,
+    IOptions<JwtSettings> jwtOptions)
+    : ControllerBase
 {
-    private readonly ILogger<AuthController> _logger;
-    private readonly IAuthServices _authServices;
-    private readonly IJwtTokenService _jwtTokenService;
-    private readonly JwtSettings _jwtSettings;
-
-    public AuthController(ILogger<AuthController> logger, IAuthServices authServices, IJwtTokenService jwtTokenService, IOptions<JwtSettings> jwtOptions)
-    {
-        _logger = logger;
-        _authServices = authServices;
-        _jwtTokenService = jwtTokenService;
-        _jwtSettings = jwtOptions.Value;
-    }
+    private readonly ILogger<AuthController> _logger = logger;
+    private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
     [HttpPost("login")]
     [AllowAnonymous]
@@ -32,15 +27,15 @@ public class AuthController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var userDto = await _authServices.LoginAsync(authLoginDto);
-        // TODO: Definir role real do usuário se houver, aqui "user" como padrão
-        var token = _jwtTokenService.GenerateToken(userDto.Id, userDto.Email, "user", _jwtSettings.ExpirationMinutes);
+        var userDto = await authServices.LoginAsync(authLoginDto);
+        
+        var token = jwtTokenService.GenerateToken(userDto.Id, userDto.Email, "USER", _jwtSettings.ExpirationMinutes);
 
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
             Secure = !Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) ?? true,
-            SameSite = SameSiteMode.Strict, // ou Lax se necessário
+            SameSite = SameSiteMode.Strict,
             Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationMinutes),
             Path = "/"
         };
@@ -62,7 +57,7 @@ public class AuthController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        await _authServices.SignupAsync(authSignupDto);
+        await authServices.SignupAsync(authSignupDto);
         return Created("", null);
     }
 

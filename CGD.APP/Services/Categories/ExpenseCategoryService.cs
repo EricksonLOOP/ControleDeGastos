@@ -71,13 +71,13 @@ public class ExpenseCategoryService(
 
     public async Task<CategoryTotalsResponseDto> GetCategoryTotalsAsync(Guid userId)
     {
-        // Get all categories for the user
+        // Todas as categorias para o user
         var categories = await _categoryRepository.GetByUserIdAsync(userId);
 
-        // Get all expenses for the user
+        // todas as epenses do user
         var expenses = await _expenseRepository.GetByUserIdAsync(userId);
 
-        // Group expenses by category and calculate totals
+        // pega grupo por expense
         var categoryTotals = categories.Select(category =>
         {
             var categoryExpenses = expenses.Where(e => e.CategoryId == category.Id).ToList();
@@ -100,7 +100,7 @@ public class ExpenseCategoryService(
             };
         }).ToList();
 
-        // Calculate grand totals
+        // Calc total
         var grandTotalIncome = categoryTotals.Sum(c => c.TotalIncome);
         var grandTotalExpenses = categoryTotals.Sum(c => c.TotalExpenses);
         var grandBalance = grandTotalIncome - grandTotalExpenses;

@@ -23,11 +23,11 @@ public class ExpenseService(
     {
         dto.UserId = adminUserId;        
         var debtorUser = await _userRepository.GetByIdAsync(dto.DebtorId) ?? throw new UserNotFoundException("Não encontramos o devedor");
-        // Validate age restriction: minors (< 18) can only have expenses
+        // valida a idade
         if (debtorUser.Age < 18 && dto.Type == TransactionType.Income)
             throw new InvalidTransactionForMinorException();
 
-        // Validate category exists and belongs to user
+        // validação da categoria
         var category = await _categoryRepository.GetByIdAsync(dto.CategoryId) ?? throw new CategoryNotFoundException();
         
 
@@ -36,7 +36,7 @@ public class ExpenseService(
 
         switch (dto.Type)
         {
-            // Validate category purpose matches transaction type
+            // validação da purpose
             case TransactionType.Expense when category.Purpose == CategoryPurpose.Income:
             case TransactionType.Income when category.Purpose == CategoryPurpose.Expense:
                 throw new InvalidCategoryPurposeException();
@@ -82,18 +82,18 @@ public class ExpenseService(
         var expense = await _expenseRepository.GetByIdAsync(expenseId) ?? 
                       throw new ExpenseNotFoundException();
       
-        // Validate user exists
+        // Valida usuário existir
         var user = await _userRepository.GetByIdAsync(expense.DebtorId 
                                                       ?? throw new ArgumentException("O Debtor ID não existe"
                                                           ))
             ?? throw new UserNotFoundException("Não encontramos o Debtor");
 
 
-        // Validate age restriction: minors (< 18) can only have expenses
+        // restrição de 18 anos
         if (user.Age < 18 && dto.Type == TransactionType.Income)
             throw new InvalidTransactionForMinorException();
 
-        // Validate category exists and belongs to user
+        // Vvalida a categoria
         var category = await _categoryRepository.GetByIdAsync(dto.CategoryId) 
                        ?? throw new CategoryNotFoundException();
      
@@ -103,7 +103,7 @@ public class ExpenseService(
 
         switch (dto.Type)
         {
-            // Validate category purpose matches transaction type
+            // valida purpose
             case TransactionType.Expense when category.Purpose == CategoryPurpose.Income:
             case TransactionType.Income when category.Purpose == CategoryPurpose.Expense:
                 throw new InvalidCategoryPurposeException();

@@ -33,24 +33,16 @@ Este projeto foi desenvolvido para demonstrar minhas habilidades como desenvolve
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/EricksonLOOP/ControleDeGastos.git
-   cd ControleDeGastos/CGD.API
+   git clone https://github.com/EricksonLOOP/ControleDeGastos
+   cd .\ControleDeGastos
    ```
 2. Restaure dependências e compile:
    ```bash
-   dotnet restore
-   dotnet build
+   docker compose build
+   docker compose up
    ```
-3. Configure a string de conexão no `appsettings.json` (veja seção abaixo).
-4. Execute migrações (se estiver usando SQL Server):
-   ```bash
-   dotnet ef database update --project CGD.Infra
-   ```
-5. Inicie a API:
-   ```bash
-   dotnet run --project CGD.API
-   ```
-6. Acesse `https://localhost:5001` (ou porta especificada) para testar endpoints.
+
+6. Acesse `https://localhost:8080` para testar endpoints.
 
 ## Configuração
 
@@ -59,12 +51,12 @@ As principais configurações ficam em `appsettings.json` / `appsettings.Develop
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ControleDeGastos;Trusted_Connection=True;"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=cgd_db;Username=postgres;Password=postgres"
   },
-  "JwtSettings": {
-    "SecretKey": "sua-chave-secreta",
-    "Issuer": "CGD.API",
-    "Audience": "CGD.Client",
+  "Jwt": {
+    "Issuer": "ControleDeGastosAPI",
+    "Audience": "ControleDeGastosFrontend",
+    "SecretKey": "dev-secret-key-12345678901234567890123456789012",
     "ExpirationMinutes": 60
   }
 }

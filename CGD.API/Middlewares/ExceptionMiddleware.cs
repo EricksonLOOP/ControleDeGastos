@@ -29,7 +29,11 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
             UserNotFoundException => HttpStatusCode.NotFound,
             ExpenseNotFoundException => HttpStatusCode.NotFound,
             ArgumentException => HttpStatusCode.BadRequest,
+            CategoryNotFoundException => HttpStatusCode.NotFound,
+            InvalidCategoryPurposeException => HttpStatusCode.BadRequest,
+            InvalidTransactionForMinorException => HttpStatusCode.BadRequest,
             UnauthorizedAccessException => HttpStatusCode.Unauthorized,
+            GroupNotFoundException => HttpStatusCode.NotFound,
             _ => HttpStatusCode.InternalServerError
         };
 

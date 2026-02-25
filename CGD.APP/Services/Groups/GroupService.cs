@@ -3,28 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CGD.APP.DTOs.Group;
+using CGD.CrossCutting.Exceptions;
 using CGD.Domain.Entities;
 using CGD.Domain.IRepositories;
 
 namespace CGD.APP.Services.Groups
 {
-    public class GroupService : IGroupService
+    public class GroupService(
+        IGroupRepository groupRepository,
+        IGroupMemberRepository groupMemberRepository,
+        IUserRepository userRepository)
+        : IGroupService
     {
-        private readonly IGroupRepository _groupRepository;
-        private readonly IGroupMemberRepository _groupMemberRepository;
-        private readonly IUserRepository _userRepository;
-
-        public GroupService(IGroupRepository groupRepository, IGroupMemberRepository groupMemberRepository, IUserRepository userRepository)
-        {
-            _groupRepository = groupRepository;
-            _groupMemberRepository = groupMemberRepository;
-            _userRepository = userRepository;
-        }
-
-
         public async Task<GroupDto> GetByIdAsync(Guid id, Guid userId)
         {
-            var group = await _groupRepository.GetByIdAsync(id, userId);
+            var group = await groupRepository.GetByIdAsync(id, userId);
             if (group == null) return null;
             return MapToDto(group);
         }
@@ -32,53 +25,53 @@ namespace CGD.APP.Services.Groups
         public async Task<IEnumerable<GroupDto>> GetAllAsync(Guid userId)
         {
 
-            var groups = await _groupRepository.GetAllAsync(userId);
+            var groups = await groupRepository.GetAllAsync(userId);
             return groups.Select(MapToDto);
         }
 
         public async Task<GroupDto> CreateAsync(GroupCreateDto dto, Guid userId)
         {
             var group = new Group { Name = dto.Name, Members = new List<GroupMember>(), CreatedBy = userId };
-            await _groupRepository.AddAsync(group);
+            await groupRepository.AddAsync(group);
             return MapToDto(group);
         }
 
 
         public async Task<GroupDto> UpdateAsync(Guid id, string name, Guid userId)
         {
-            var group = await _groupRepository.GetByIdAsync(id, userId);
+            var group = await groupRepository.GetByIdAsync(id, userId);
             if (group == null) return null;
             group.Name = name;
-            await _groupRepository.UpdateAsync(group);
+            await groupRepository.UpdateAsync(group);
             return MapToDto(group);
         }
 
 
         public async Task DeleteAsync(Guid id)
         {
-            await _groupRepository.DeleteAsync(id);
+            await groupRepository.DeleteAsync(id);
         }
 
 
         public async Task AddUserToGroupAsync(Guid groupId, Guid groupAdmin, Guid userToBeAdd)
         {
-            var group = await _groupRepository.GetByIdAsync(groupId, groupAdmin);
-            var user = await _userRepository.GetByIdAsync(userToBeAdd);
-            if (group == null || user == null) throw new Exception("Group or User not found");
+            var group = await groupRepository.GetByIdAsync(groupId, groupAdmin);
+            var user = await userRepository.GetByIdAsync(userToBeAdd);
+            if (group == null || user == null) throw new GroupNotFoundException();
             var member = new GroupMember { GroupId = groupId, UserId = userToBeAdd };
-            await _groupMemberRepository.AddAsync(member);
+            await groupMemberRepository.AddAsync(member);
         }
 
         public async Task RemoveUserFromGroupAsync(Guid groupId, Guid userId)
         {
-            await _groupMemberRepository.RemoveAsync(groupId, userId);
+            await groupMemberRepository.RemoveAsync(groupId, userId);
         }
 
         public async Task<IEnumerable<GroupDto>> GetGroupsByUserIdAsync(Guid userId)
         {
-            var memberships = await _groupMemberRepository.GetByUserIdAsync(userId);
+            var memberships = await groupMemberRepository.GetByUserIdAsync(userId);
             var groupIds = memberships.Select(m => m.GroupId);
-            var groups = await _groupRepository.GetAllAsync(userId);
+            var groups = await groupRepository.GetAllAsync(userId);
             return groups.Where(g => groupIds.Contains(g.Id)).Select(MapToDto);
         }
 

@@ -183,7 +183,7 @@ public async Task<List<EnrichedUserDto>> GetAllEnrichedUsers(Guid adminGroupId)
     var usersExpenses = await _expenseRepository.GetByDebtorIdsAsync(usersId);
 
     var expensesByUser = usersExpenses
-        .GroupBy(e => e.DebtorId ?? throw new RuntimeBinderException("O Debtor ID não existe"))
+        .GroupBy(e => e.DebtorId ?? throw new ArgumentException("O Debtor ID não existe"))
         .ToDictionary(g => g.Key, g => g.Select(ExpenseMapper.ToDto).ToList());
 
     var result = enrichedUsers.Select(user =>
