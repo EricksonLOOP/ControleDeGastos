@@ -1,0 +1,39 @@
+﻿version: "3.9"
+
+services:
+  cgd.api:
+    image: cgd.api
+    build:
+      context: .
+      dockerfile: CGD.API/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=cgd_db;Username=postgres;Password=postgres
+    networks:
+      - cgd-network
+
+  postgres:
+    image: postgres:16
+    container_name: cgd-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: cgd_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - cgd-network
+
+volumes:
+  pgdata:
+
+networks:
+  cgd-network:
+    driver: bridge
