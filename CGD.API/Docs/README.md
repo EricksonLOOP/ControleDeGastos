@@ -5,7 +5,8 @@ Aplicação para gestão financeira colaborativa: registre despesas por grupos, 
 ## Sobre o Projeto
 
 Este projeto foi desenvolvido para demonstrar minhas habilidades como desenvolvedor C# e dotnet, apresentando uma API RESTful que permite o controle de gastos em grupos de usuários com gerenciamento de saldos, débitos e autenticação via JWT.
-
+## Rode o Frontend Aqui
+Accesar Frontend: https://github.com/EricksonLOOP/gdc-frontend
 ## Funcionalidades
 
 - Cadastro e autenticação de usuários
@@ -33,7 +34,7 @@ Este projeto foi desenvolvido para demonstrar minhas habilidades como desenvolve
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/EricksonLOOP/ControleDeGastos
+   git clone https://github.com/EricksonLOOP/ControleDeGastos.git
    cd .\ControleDeGastos
    ```
 2. Restaure dependências e compile:
