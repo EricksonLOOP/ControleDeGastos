@@ -25,7 +25,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
         return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
     }
 
- 
+
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -42,6 +42,10 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     [HttpGet("user/{userId:guid}")]
     public async Task<IActionResult> GetByUserId(Guid userId)
     {
+        var authUserId = GetUserId();
+        if (authUserId != userId)
+            return Forbid();
+
         var categories = await _categoryService.GetByUserIdAsync(userId);
         return Ok(categories);
     }
@@ -49,6 +53,10 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     [HttpGet("user/{userId:guid}/paged")]
     public async Task<IActionResult> GetPagedByUserId(Guid userId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
+        var authUserId = GetUserId();
+        if (authUserId != userId)
+            return Forbid();
+
         var categories = await _categoryService.GetPagedByUserIdAsync(userId, page, pageSize);
         return Ok(categories);
     }
@@ -56,6 +64,10 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     [HttpGet("user/{userId:guid}/totals")]
     public async Task<IActionResult> GetCategoryTotals(Guid userId)
     {
+        var authUserId = GetUserId();
+        if (authUserId != userId)
+            return Forbid();
+
         var totals = await _categoryService.GetCategoryTotalsAsync(userId);
         return Ok(totals);
     }

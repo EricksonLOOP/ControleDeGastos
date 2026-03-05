@@ -3164,11 +3164,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API\\CGD.API.csproj",
+      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj",
       "projectName": "CGD.API",
-      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API\\CGD.API.csproj",
+      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj",
       "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API\\obj\\",
+      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3185,11 +3185,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj"
+            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {
+              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj"
             },
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
+            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
+              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
             }
           }
         }

@@ -12,7 +12,7 @@ public interface IUserService
     Task<UserDto> CreateAsync(UserCreateDto dto);
     Task<UserDto> UpdateAsync(Guid id, UserUpdateDto dto);
     Task DeleteAsync(Guid id);
-    Task<UserTotalsResponseDto> GetUserTotalsAsync();
+    Task<UserTotalsResponseDto> GetUserTotalsAsync(Guid adminUserId);
     Task<List<EnrichedUserDto>> GetAllEnrichedUsers(Guid adminGroupId);
 }
 

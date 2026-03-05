@@ -2742,11 +2742,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
       "projectName": "CGD.API.Tests",
-      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
+      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
       "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API.Tests\\obj\\",
+      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2763,8 +2763,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API\\CGD.API.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.API\\CGD.API.csproj"
+            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj": {
+              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj"
             }
           }
         }

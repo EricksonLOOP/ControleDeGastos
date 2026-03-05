@@ -15,3 +15,21 @@ C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.Infra
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.pdb
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.genruntimeconfig.cache
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\ref\CGD.Infra.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Infra.deps.json
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Infra.runtimeconfig.json
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Infra.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Infra.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Domain.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\bin\Debug\net8.0\CGD.Domain.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.csproj.AssemblyReference.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.AssemblyInfoInputs.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.AssemblyInfo.cs
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.csproj.CoreCompileInputs.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.sourcelink.json
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.csproj.Up2Date
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\refint\CGD.Infra.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\CGD.Infra.genruntimeconfig.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Infra\obj\Debug\net8.0\ref\CGD.Infra.dll

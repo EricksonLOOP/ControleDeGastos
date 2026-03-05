@@ -13,15 +13,15 @@ public class ExpenseService(
     IExpenseRepository expenseRepository,
     IUserRepository userRepository,
     IExpenseCategoryRepository categoryRepository,
-    IGroupService groupService) : IExpenseService
+    IGroupMemberRepository groupMemberRepository) : IExpenseService
 {
     private readonly IExpenseRepository _expenseRepository = expenseRepository;
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IExpenseCategoryRepository _categoryRepository = categoryRepository;
-    private readonly IGroupMemberRepository _groupMemberRepository;
+    private readonly IGroupMemberRepository _groupMemberRepository = groupMemberRepository;
     public async Task<ExpenseDto> CreateAsync(ExpenseCreateDto dto, Guid adminUserId)
     {
-        dto.UserId = adminUserId;        
+        dto.UserId = adminUserId;
         var debtorUser = await _userRepository.GetByIdAsync(dto.DebtorId) ?? throw new UserNotFoundException("Não encontramos o devedor");
         // valida a idade
         if (debtorUser.Age < 18 && dto.Type == TransactionType.Income)
@@ -29,7 +29,7 @@ public class ExpenseService(
 
         // validação da categoria
         var category = await _categoryRepository.GetByIdAsync(dto.CategoryId) ?? throw new CategoryNotFoundException();
-        
+
 
         if (category.UserId != dto.UserId)
             throw new CategoryNotFoundException();
@@ -79,11 +79,11 @@ public class ExpenseService(
 
     public async Task<ExpenseDto> UpdateAsync(Guid expenseId, Guid adminId, ExpenseUpdateDto dto)
     {
-        var expense = await _expenseRepository.GetByIdAsync(expenseId) ?? 
+        var expense = await _expenseRepository.GetByIdAsync(expenseId) ??
                       throw new ExpenseNotFoundException();
-      
+
         // Valida usuário existir
-        var user = await _userRepository.GetByIdAsync(expense.DebtorId 
+        var user = await _userRepository.GetByIdAsync(expense.DebtorId
                                                       ?? throw new ArgumentException("O Debtor ID não existe"
                                                           ))
             ?? throw new UserNotFoundException("Não encontramos o Debtor");
@@ -94,9 +94,9 @@ public class ExpenseService(
             throw new InvalidTransactionForMinorException();
 
         // Vvalida a categoria
-        var category = await _categoryRepository.GetByIdAsync(dto.CategoryId) 
+        var category = await _categoryRepository.GetByIdAsync(dto.CategoryId)
                        ?? throw new CategoryNotFoundException();
-     
+
 
         if (category.UserId != adminId)
             throw new CategoryNotFoundException();
@@ -138,7 +138,7 @@ public class ExpenseService(
             .ToList();
 
         var expenses = await _expenseRepository.GetByUserIdsAsync(userIds);
-       
+
         return expenses.Select(ExpenseMapper.ToDto).ToList();
     }
 }

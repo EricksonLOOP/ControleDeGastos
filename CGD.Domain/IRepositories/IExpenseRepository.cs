@@ -12,7 +12,8 @@ public interface IExpenseRepository
     Task<IReadOnlyList<Expense>> GetAllWithUsersAsync();
     Task UpdateAsync(Expense expense);
     Task DeleteAsync(Expense expense);
+    Task DeleteByUserOrDebtorIdAsync(Guid userId);
     Task<IReadOnlyList<Expense>> GetByUserIdsAsync(List<Guid> userIds);
     Task<IReadOnlyList<Expense>> GetByDebtorIdsAsync(List<Guid> userIds);
-    
+
 }

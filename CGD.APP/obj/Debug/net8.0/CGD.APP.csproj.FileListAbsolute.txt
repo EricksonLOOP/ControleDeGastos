@@ -17,3 +17,23 @@ C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.APP\o
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.APP\obj\Debug\net8.0\refint\CGD.APP.dll
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.pdb
 C:\Users\EricksonDias\Documents\Projetos\EducationSys\ControleDeGastos\CGD.APP\obj\Debug\net8.0\ref\CGD.APP.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.deps.json
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.CrossCutting.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Domain.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Infra.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.CrossCutting.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Domain.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Infra.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.AssemblyReference.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.AssemblyInfoInputs.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.AssemblyInfo.cs
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.CoreCompileInputs.cache
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.sourcelink.json
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.Up2Date
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\refint\CGD.APP.dll
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.pdb
+C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\ref\CGD.APP.dll

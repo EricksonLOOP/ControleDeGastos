@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {}
+    "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {
+    "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
+        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
         "projectName": "CGD.APP",
-        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
+        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
         "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\obj\\",
+        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
-                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
+              "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
+                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
               },
-              "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
-                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
+              "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
+                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
               }
             }
           }
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
+    "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj",
+        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj",
         "projectName": "CGD.CrossCutting",
-        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj",
+        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj",
         "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.CrossCutting\\obj\\",
+        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,11 +95,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
-                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
+              "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
+                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
               },
-              "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj": {
-                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj"
+              "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj": {
+                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj"
               }
             }
           }
@@ -144,14 +144,14 @@
         }
       }
     },
-    "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
+    "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj",
         "projectName": "CGD.Domain",
-        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj",
+        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj",
         "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\obj\\",
+        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -204,14 +204,14 @@
         }
       }
     },
-    "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj": {
+    "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj",
+        "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj",
         "projectName": "CGD.Infra",
-        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj",
+        "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\CGD.Infra.csproj",
         "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Infra\\obj\\",
+        "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -228,8 +228,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
-                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
+              "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
+                "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
               }
             }
           }

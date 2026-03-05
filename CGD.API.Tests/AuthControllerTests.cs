@@ -31,8 +31,8 @@ namespace CGD.API.Tests
             mockAuth.Setup(s => s.LoginAsync(loginDto)).ReturnsAsync(userDto);
 
             var mockJwt = new Mock<IJwtTokenService>();
-            mockJwt.Setup(s => s.GenerateToken(userDto.Id, userDto.Email, "user", It.IsAny<int>()))
-                   .Returns("token");
+            mockJwt.Setup(s => s.GenerateToken(userDto.Id, userDto.Email, "USER", It.IsAny<int>()))
+              .Returns("token");
 
             var controller = new AuthController(Mock.Of<ILogger<AuthController>>(), mockAuth.Object, mockJwt.Object, Options.Create(_jwtSettings));
             controller.ControllerContext = new ControllerContext
@@ -54,7 +54,7 @@ namespace CGD.API.Tests
                 userDto.Email
             });
 
-            mockJwt.Verify(s => s.GenerateToken(userDto.Id, userDto.Email, "user", It.IsAny<int>()), Times.Once);
+            mockJwt.Verify(s => s.GenerateToken(userDto.Id, userDto.Email, "USER", It.IsAny<int>()), Times.Once);
             // Cookie no headr para testar
             Assert.Contains("AuthToken", controller.Response.Headers["Set-Cookie"].ToString());
         }
@@ -63,9 +63,9 @@ namespace CGD.API.Tests
         public async Task LoginUser_ReturnsBadRequest_WhenModelInvalid()
         {
             var controller = new AuthController(Mock.Of<ILogger<AuthController>>(), Mock.Of<IAuthServices>(), Mock.Of<IJwtTokenService>(), Options.Create(_jwtSettings))
-                {
-                    ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
-                };
+            {
+                ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
+            };
             controller.ModelState.AddModelError("Email", "Required");
 
             var result = await controller.LoginUser(new AuthLoginDto());
@@ -80,9 +80,9 @@ namespace CGD.API.Tests
             mockAuth.Setup(s => s.SignupAsync(signupDto)).Returns(Task.CompletedTask);
 
             var controller = new AuthController(Mock.Of<ILogger<AuthController>>(), mockAuth.Object, Mock.Of<IJwtTokenService>(), Options.Create(_jwtSettings))
-                {
-                    ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
-                };
+            {
+                ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
+            };
 
             var result = await controller.SignupUser(signupDto);
             Assert.IsType<CreatedResult>(result);
@@ -93,9 +93,9 @@ namespace CGD.API.Tests
         public async Task SignupUser_ReturnsBadRequest_WhenModelInvalid()
         {
             var controller = new AuthController(Mock.Of<ILogger<AuthController>>(), Mock.Of<IAuthServices>(), Mock.Of<IJwtTokenService>(), Options.Create(_jwtSettings))
-                {
-                    ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
-                };
+            {
+                ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
+            };
             controller.ModelState.AddModelError("Email", "Required");
 
             var result = await controller.SignupUser(new AuthSignupDto());
@@ -106,9 +106,9 @@ namespace CGD.API.Tests
         public void Logout_ReturnsNoContent_AndDeletesCookie()
         {
             var controller = new AuthController(Mock.Of<ILogger<AuthController>>(), Mock.Of<IAuthServices>(), Mock.Of<IJwtTokenService>(), Options.Create(_jwtSettings))
-                {
-                    ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
-                };
+            {
+                ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
+            };
             controller.Response.Cookies.Append("AuthToken", "dummy");
 
             var result = controller.Logout();

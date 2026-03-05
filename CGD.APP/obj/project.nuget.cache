@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qnFo4CcFj6I=",
+  "dgSpecHash": "jbffwe/xoBA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\EducationSys\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
+  "projectFilePath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EricksonDias\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\EricksonDias\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.4\\microsoft.entityframeworkcore.8.0.4.nupkg.sha512",

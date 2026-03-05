@@ -11,8 +11,7 @@ public class UserUpdateDto
     [MaxLength(200, ErrorMessage = "Nome deve ter no máximo 200 caracteres")]
     public string Name { get; set; } = null!;
 
-    [JsonPropertyName("age")]
-    [Required(ErrorMessage = "Idade é obrigatória")]
-    [Range(0, int.MaxValue, ErrorMessage = "Idade deve ser maior ou igual a zero")]
+    [JsonPropertyName("birthDate")]
+    [Required(ErrorMessage = "Data de nascimento é obrigatória")]
     public DateTime BirthDate { get; set; }
 }

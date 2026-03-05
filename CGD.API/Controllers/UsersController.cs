@@ -31,7 +31,7 @@ public class UsersController(IUserService userService) : ControllerBase
     }
 
     [HttpGet("all/enriched")]
-    public async Task<IActionResult> GetEnrichedUsers(Guid id)
+    public async Task<IActionResult> GetEnrichedUsers()
     {
         var adminGroupId = GetUserId();
         var enrichedUsers = await _userService.GetAllEnrichedUsers(adminGroupId);
@@ -71,7 +71,8 @@ public class UsersController(IUserService userService) : ControllerBase
     [HttpGet("totals")]
     public async Task<IActionResult> GetUserTotals()
     {
-        var totals = await _userService.GetUserTotalsAsync();
+        var userId = GetUserId();
+        var totals = await _userService.GetUserTotalsAsync(userId);
         return Ok(totals);
     }
 

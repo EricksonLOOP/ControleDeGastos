@@ -11,7 +11,7 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
 {
     private readonly IExpenseService _expenseService = expenseService;
 
-  
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ExpenseCreateDto dto)
     {
@@ -32,6 +32,10 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
     [HttpGet("user/{userId:guid}")]
     public async Task<IActionResult> GetByUserId(Guid userId, [FromQuery] ExpenseFilterDto filter)
     {
+        var authUserId = GetUserId();
+        if (authUserId != userId)
+            return Forbid();
+
         var expenses = await _expenseService.GetByUserIdAsync(userId, filter);
         return Ok(expenses);
     }

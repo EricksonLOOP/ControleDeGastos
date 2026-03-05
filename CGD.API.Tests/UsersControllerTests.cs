@@ -92,7 +92,7 @@ namespace CGD.API.Tests
         {
             var totals = new UserTotalsResponseDto();
             var mock = new Mock<IUserService>();
-            mock.Setup(s => s.GetUserTotalsAsync()).ReturnsAsync(totals);
+            mock.Setup(s => s.GetUserTotalsAsync(_userId)).ReturnsAsync(totals);
             var controller = ControllerTestHelpers.CreateWithUser<UsersController>(_userId, mock.Object);
 
             var result = await controller.GetUserTotals();

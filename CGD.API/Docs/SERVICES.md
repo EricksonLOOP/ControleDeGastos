@@ -4,7 +4,7 @@ Serviços da camada de aplicação fornecidos pelo projeto `CGD.APP`. Cada servi
 
 ---
 
-##  Serviço de Autenticação (`IAuthServices` / `AuthServices`)
+## Serviço de Autenticação (`IAuthServices` / `AuthServices`)
 
 **Finalidade:** lidar com fluxos de cadastro e autenticação de usuários.
 
@@ -47,7 +47,7 @@ Serviços da camada de aplicação fornecidos pelo projeto `CGD.APP`. Cada servi
 | `GetPagedByCommonGroupsAsync(Guid userId, int page, int pageSize)` | Usuários que compartilham qualquer grupo com `userId`.                     |
 | `UpdateAsync(Guid id, UserUpdateDto dto)`                          | Modifica nome e/ou data de nascimento (recalcula idade).                   |
 | `DeleteAsync(Guid id)`                                             | Remove usuário ou lança `UserNotFoundException`.                           |
-| `GetUserTotalsAsync()`                                             | Agrega receita/despesa por usuário e total geral.                          |
+| `GetUserTotalsAsync(Guid adminUserId)`                             | Agrega receita/despesa por usuário e total geral no escopo do admin.       |
 | `GetAllEnrichedUsers(Guid adminGroupId)`                           | Retorna lista de `EnrichedUserDto` com dados de usuário, grupo e despesas. |
 
 ### DTOs & exceções
@@ -87,7 +87,7 @@ Serviços da camada de aplicação fornecidos pelo projeto `CGD.APP`. Cada servi
 
 ---
 
-##  Serviço de Categoria (`IExpenseCategoryService` / `ExpenseCategoryService`)
+## Serviço de Categoria (`IExpenseCategoryService` / `ExpenseCategoryService`)
 
 **Finalidade:** tratar das categorias de despesa/receita pertencentes aos usuários.
 
@@ -119,7 +119,7 @@ Serviços da camada de aplicação fornecidos pelo projeto `CGD.APP`. Cada servi
 
 ---
 
-##  Serviço de Despesa (`IExpenseService` / `ExpenseService`)
+## Serviço de Despesa (`IExpenseService` / `ExpenseService`)
 
 **Finalidade:** gerenciar transações financeiras, validando regras de negócio.
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CGD.CrossCutting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35b3b6adeeed729a80958c710229ed614ee44442")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d77e0be525596133e2a1c92c2cc7acad586ddcd6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CGD.CrossCutting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CGD.CrossCutting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using CGD.APP.DTOs.Expense;
-using CGD.APP.DTOs.Group;
 using CGD.APP.Services.Expenses;
-using CGD.APP.Services.Groups;
 using CGD.CrossCutting.Exceptions;
 using CGD.Domain.Entities;
 using CGD.Domain.IRepositories;
@@ -18,7 +16,7 @@ namespace CGD.APP.Tests
         private readonly Mock<IExpenseRepository> _expenseRepo = new();
         private readonly Mock<IUserRepository> _userRepo = new();
         private readonly Mock<IExpenseCategoryRepository> _categoryRepo = new();
-        private readonly Mock<IGroupService> _groupService = new();
+        private readonly Mock<IGroupMemberRepository> _groupMemberRepo = new();
         private readonly ExpenseService _service;
 
         public ExpenseServiceTests()
@@ -27,7 +25,7 @@ namespace CGD.APP.Tests
                 _expenseRepo.Object,
                 _userRepo.Object,
                 _categoryRepo.Object,
-                _groupService.Object);
+                _groupMemberRepo.Object);
         }
 
         [Fact]
@@ -147,14 +145,8 @@ namespace CGD.APP.Tests
         [Fact]
         public async Task GetAll_ReturnsDtos()
         {
-            // the service has a private field _groupMemberRepository that isn't
-            // assigned in the constructor; we need to inject a mock via reflection.
-            var gmRepo = new Mock<IGroupMemberRepository>();
-            var field = typeof(ExpenseService).GetField("_groupMemberRepository", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!;
-            field.SetValue(_service, gmRepo.Object);
-
             var members = new List<CGD.Domain.Entities.GroupMember> { new CGD.Domain.Entities.GroupMember { User = new User { Id = Guid.NewGuid() } } };
-            gmRepo.Setup(g => g.GetAllByGroupAdminId(It.IsAny<Guid>())).ReturnsAsync(members);
+            _groupMemberRepo.Setup(g => g.GetAllByGroupAdminId(It.IsAny<Guid>())).ReturnsAsync(members);
             _expenseRepo.Setup(r => r.GetByUserIdsAsync(It.IsAny<List<Guid>>())).ReturnsAsync(new List<Expense> { new Expense { Amount = 5 } });
 
             var result = await _service.GetAll(Guid.NewGuid());

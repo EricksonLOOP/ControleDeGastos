@@ -112,20 +112,40 @@ namespace CGD.APP.Tests
         }
 
         [Fact]
+        public async Task DeleteAsync_RemovesUserRelatedExpenses_BeforeDeletingUser()
+        {
+            var user = new User { Id = Guid.NewGuid(), Name = "u", BirthDate = DateTime.Today.AddYears(-20), Email = "u@x.com", PasswordHash = "hash" };
+            _userRepo.Setup(r => r.GetByIdAsync(user.Id)).ReturnsAsync(user);
+            _expenseRepo.Setup(r => r.DeleteByUserOrDebtorIdAsync(user.Id)).Returns(Task.CompletedTask);
+            _userRepo.Setup(r => r.DeleteAsync(user)).Returns(Task.CompletedTask);
+
+            await _service.DeleteAsync(user.Id);
+
+            _expenseRepo.Verify(r => r.DeleteByUserOrDebtorIdAsync(user.Id), Times.Once);
+            _userRepo.Verify(r => r.DeleteAsync(user), Times.Once);
+        }
+
+        [Fact]
         public async Task GetUserTotalsAsync_CalculatesTotals()
         {
-            // expenses must include User reference for grouping
+            var adminId = Guid.NewGuid();
             var userA = new User { Id = Guid.NewGuid(), Name = "Alice" };
             var userB = new User { Id = Guid.NewGuid(), Name = "Bob" };
+
             var expenses = new List<Expense>
             {
-                new Expense { UserId = userA.Id, User = userA, Type = TransactionType.Income, Amount = 100 },
-                new Expense { UserId = userB.Id, User = userB, Type = TransactionType.Expense, Amount = 40 }
+                new Expense { UserId = adminId, DebtorId = userA.Id, Type = TransactionType.Income, Amount = 100 },
+                new Expense { UserId = adminId, DebtorId = userB.Id, Type = TransactionType.Expense, Amount = 40 }
             };
-            _expenseRepo.Setup(r => r.GetAllWithUsersAsync()).ReturnsAsync(expenses);
 
-            var result = await _service.GetUserTotalsAsync();
+            _userRepo.Setup(r => r.GetEnrichedUsers(adminId)).ReturnsAsync(new List<User> { userA, userB });
+            _expenseRepo.Setup(r => r.GetByDebtorIdsAsync(It.IsAny<List<Guid>>())).ReturnsAsync(expenses);
+
+            var result = await _service.GetUserTotalsAsync(adminId);
             result.OverallTotals.TotalIncome.Should().Be(100);
+            result.OverallTotals.TotalExpense.Should().Be(40);
+            result.UserTotals.Should().Contain(x => x.UserId == userA.Id && x.TotalIncome == 100);
+            result.UserTotals.Should().Contain(x => x.UserId == userB.Id && x.TotalExpense == 40);
         }
 
         [Fact]

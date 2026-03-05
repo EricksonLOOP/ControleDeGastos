@@ -44,7 +44,7 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
 
         if (filter.StartDate.HasValue)
             query = query.Where(e => e.Date >= filter.StartDate.Value);
-        
+
 
         if (filter.EndDate.HasValue)
             query = query.Where(e => e.Date <= filter.EndDate.Value);
@@ -78,6 +78,19 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
     public async Task DeleteAsync(Expense expense)
     {
         _context.Expenses.Remove(expense);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteByUserOrDebtorIdAsync(Guid userId)
+    {
+        var expenses = await _context.Expenses
+            .Where(e => e.UserId == userId || e.DebtorId == userId)
+            .ToListAsync();
+
+        if (expenses.Count == 0)
+            return;
+
+        _context.Expenses.RemoveRange(expenses);
         await _context.SaveChangesAsync();
     }
 
