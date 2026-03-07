@@ -13,9 +13,11 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        // Escolha de provider: PostgreSQL via Npgsql como banco padrao da aplicacao.
         services.AddDbContext<CGDDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
+        // Vincula contratos de repositorio as implementacoes concretas de infraestrutura.
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
         services.AddScoped<IExpenseCategoryRepository, ExpenseCategoryRepository>();

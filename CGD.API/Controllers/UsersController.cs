@@ -18,6 +18,7 @@ public class UsersController(IUserService userService) : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+        // Escopo de seguranca: o usuario autenticado define o admin responsavel pela nova pessoa.
         var userId = GetUserId();
         var userCreated = await _userService.CreateSimpleAsync(dto, userId);
         return Ok(new
@@ -61,6 +62,7 @@ public class UsersController(IUserService userService) : ControllerBase
     public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier || c.Type == "sub");
+        // Unauthorized indica ausencia/invalidade de identidade; Forbid seria usado quando identidade existe sem permissao.
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
             return Unauthorized();
 
@@ -71,6 +73,7 @@ public class UsersController(IUserService userService) : ControllerBase
     [HttpGet("totals")]
     public async Task<IActionResult> GetUserTotals()
     {
+        // Escopo dos totais: membros acessiveis ao admin autenticado + consolidado geral.
         var userId = GetUserId();
         var totals = await _userService.GetUserTotalsAsync(userId);
         return Ok(totals);
@@ -95,6 +98,7 @@ public class UsersController(IUserService userService) : ControllerBase
 
     private Guid GetUserId()
     {
+        // Aceita NameIdentifier ou sub para compatibilidade entre emissores JWT.
         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier || c.Type == "sub");
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
             throw new UnauthorizedAccessException();

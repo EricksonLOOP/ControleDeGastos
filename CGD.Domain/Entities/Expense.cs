@@ -8,8 +8,9 @@ public class Expense
     [Key]
     public Guid Id { get; set; }
 
+    // UserId identifica o dono do lancamento (quem administra o registro).
     public Guid UserId { get; set; }
- 
+
     [Required]
     [MaxLength(400)]
     public string Description { get; set; } = null!;
@@ -23,6 +24,7 @@ public class Expense
 
     [Required]
     public TransactionType Type { get; set; }
+    // DebtorId representa a pessoa associada ao gasto/receita dentro do escopo do dono.
     public Guid? DebtorId { get; set; }
     [ForeignKey(nameof(UserId))]
     public User? User { get; set; }

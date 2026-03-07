@@ -17,6 +17,7 @@ namespace CGD.APP.Services.Groups
     {
         public async Task<GroupDto> GetByIdAsync(Guid id, Guid userId)
         {
+            // Contrato atual: quando grupo nao existe no escopo, retorna null em vez de excecao.
             var group = await groupRepository.GetByIdAsync(id, userId);
             if (group == null) return null;
             return MapToDto(group);
@@ -55,6 +56,7 @@ namespace CGD.APP.Services.Groups
 
         public async Task AddUserToGroupAsync(Guid groupId, Guid groupAdmin, Guid userToBeAdd)
         {
+            // Valida existencia do grupo no escopo do admin e existencia do usuario antes de vincular membro.
             var group = await groupRepository.GetByIdAsync(groupId, groupAdmin);
             var user = await userRepository.GetByIdAsync(userToBeAdd);
             if (group == null || user == null) throw new GroupNotFoundException();
@@ -64,6 +66,7 @@ namespace CGD.APP.Services.Groups
 
         public async Task RemoveUserFromGroupAsync(Guid groupId, Guid userId)
         {
+            // Remocao e idempotente no repositorio: se nao existir vinculo, nao ha erro.
             await groupMemberRepository.RemoveAsync(groupId, userId);
         }
 

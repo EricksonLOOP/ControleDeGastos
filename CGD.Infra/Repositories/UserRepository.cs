@@ -11,7 +11,7 @@ public class UserRepository(CGDDbContext context) : IUserRepository
 
     public async Task<User> AddAsync(User user)
     {
-        var userCreated =  _context.Users.Add(user);
+        var userCreated = _context.Users.Add(user);
         await _context.SaveChangesAsync();
         return userCreated.Entity;
     }
@@ -55,6 +55,8 @@ public class UserRepository(CGDDbContext context) : IUserRepository
 
     public async Task<List<User>> GetEnrichedUsers(Guid adminGroupId)
     {
+        // Escopo: retorna usuarios que participam de grupos criados pelo admin informado.
+        // Include/ThenInclude carregam navegacoes usadas na camada APP sem roundtrips extras.
         return await _context.Users
             .Include(u => u.GroupMembers)
             .ThenInclude(gm => gm.Group)

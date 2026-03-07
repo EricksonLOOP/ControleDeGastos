@@ -24,11 +24,12 @@ public class AuthController(
     [AllowAnonymous]
     public async Task<IActionResult> LoginUser([FromBody] AuthLoginDto authLoginDto)
     {
+        // Contrato: credenciais validas retornam 200 e gravam JWT no cookie HttpOnly.
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         var userDto = await authServices.LoginAsync(authLoginDto);
-        
+
         var token = jwtTokenService.GenerateToken(userDto.Id, userDto.Email, "USER", _jwtSettings.ExpirationMinutes);
 
         var cookieOptions = new CookieOptions
@@ -55,6 +56,7 @@ public class AuthController(
     [AllowAnonymous]
     public async Task<IActionResult> SignupUser([FromBody] AuthSignupDto authSignupDto)
     {
+        // Contrato: cria conta e retorna 201 sem payload de usuario autenticado.
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
         await authServices.SignupAsync(authSignupDto);
@@ -64,6 +66,7 @@ public class AuthController(
     [HttpPost("logout")]
     public IActionResult Logout()
     {
+        // Contrato: logout invalida o cookie de autenticacao e retorna 204.
         Response.Cookies.Delete("AuthToken", new CookieOptions
         {
             HttpOnly = true,

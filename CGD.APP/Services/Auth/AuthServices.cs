@@ -15,6 +15,7 @@ public class AuthServices(IUserRepository userRepository, PasswordHash passwordH
 
     public async Task SignupAsync(AuthSignupDto authSignupDto)
     {
+        // Regra de negocio: bloqueia email duplicado para preservar unicidade de identidade.
         var existingUser = await _userRepository.GetByEmailAsync(authSignupDto.Email);
         if (existingUser is not null)
             throw new ArgumentException("Email já cadastrado");
@@ -25,6 +26,7 @@ public class AuthServices(IUserRepository userRepository, PasswordHash passwordH
 
     public async Task<UserDto> LoginAsync(AuthLoginDto authLoginDto)
     {
+        // Fluxo de autenticacao: busca usuario, valida hash e retorna Unauthorized em credencial invalida.
         var user = await _userRepository.GetByEmailAsync(authLoginDto.email) ?? throw new UserNotFoundException();
         if (!_passwordHash.Verify(authLoginDto.Password, user.PasswordHash)) throw new UnauthorizedAccessException();
 

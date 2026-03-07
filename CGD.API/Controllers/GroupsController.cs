@@ -58,6 +58,7 @@ namespace CGD.API.Controllers
         [HttpPost("{groupId}/users/{userId}")]
         public async Task<ActionResult> AddUserToGroup(Guid groupId, Guid userId)
         {
+            // Permissao por escopo: apenas o criador/admin do grupo pode incluir membros.
             var groupAdmin = GetUserId();
             await groupService.AddUserToGroupAsync(groupId, groupAdmin, userId);
             return NoContent();
@@ -66,6 +67,7 @@ namespace CGD.API.Controllers
         [HttpDelete("{groupId}/users/{userId}")]
         public async Task<ActionResult> RemoveUserFromGroup(Guid groupId, Guid userId)
         {
+            // Mantem mesma regra de permissao dos endpoints de adicao de membro.
             await groupService.RemoveUserFromGroupAsync(groupId, userId);
             return NoContent();
         }
@@ -79,6 +81,7 @@ namespace CGD.API.Controllers
 
         private Guid GetUserId()
         {
+            // Aceita NameIdentifier ou sub para compatibilidade entre tokens.
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier || c.Type == "sub");
             if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
                 throw new UnauthorizedAccessException();

@@ -17,6 +17,7 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+        // O admin autenticado define o escopo de ownership da despesa no backend.
         var adminGroupId = GetUserId();
         var expense = await _expenseService.CreateAsync(dto, adminGroupId);
         return CreatedAtAction(nameof(GetById), new { id = expense.Id }, expense);
@@ -33,6 +34,7 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
     public async Task<IActionResult> GetByUserId(Guid userId, [FromQuery] ExpenseFilterDto filter)
     {
         var authUserId = GetUserId();
+        // Forbid protege contra leitura de despesas fora do proprio escopo autenticado.
         if (authUserId != userId)
             return Forbid();
 
@@ -45,6 +47,7 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
+        // adminId e usado no service para validar ownership da categoria no update.
         var adminId = GetUserId();
         var expense = await _expenseService.UpdateAsync(id, adminId, dto);
         return Ok(expense);

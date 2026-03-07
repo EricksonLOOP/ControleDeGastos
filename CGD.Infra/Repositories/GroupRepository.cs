@@ -19,17 +19,18 @@ namespace CGD.Infra.Repositories
         public async Task<Group?> GetByIdAsync(Guid id, Guid userId)
         {
             return await _context.Groups
-                .Include(g => g.Members )
-                .ThenInclude(m => m.User )
+                .Include(g => g.Members)
+                .ThenInclude(m => m.User)
                 .FirstOrDefaultAsync(g => g.Id == id && g.CreatedBy == userId);
         }
 
         public async Task<IEnumerable<Group>> GetAllAsync(Guid userId)
         {
+            // Visibilidade de grupos: usuario ve grupos que criou ou onde e membro.
             return await _context.Groups
                 .Include(g => g.Members)
                 .ThenInclude(m => m.User)
-                .Where(g => g.CreatedBy == userId || 
+                .Where(g => g.CreatedBy == userId ||
                             g.Members.Any(m => m.UserId == userId))
                 .ToListAsync();
         }

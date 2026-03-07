@@ -6,6 +6,7 @@ namespace CGD.APP.DTOs.Expense;
 public class ExpenseCreateDto
 {
     [Required]
+    // UserId e preenchido no backend pelo usuario autenticado (escopo de ownership).
     public Guid UserId { get; set; }
 
     [Required]
@@ -13,6 +14,7 @@ public class ExpenseCreateDto
     public string Description { get; set; } = null!;
 
     [Required]
+    // Valor positivo e obrigatorio para preservar consistencia financeira.
     [Range(0.01, double.MaxValue)]
     public decimal Amount { get; set; }
 

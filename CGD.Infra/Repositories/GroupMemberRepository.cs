@@ -50,6 +50,7 @@ namespace CGD.Infra.Repositories
 
         public async Task<IReadOnlyList<GroupMember>> GetAllByGroupAdminId(Guid userId)
         {
+            // Escopo: membros dos grupos cujo criador e o admin informado.
             return await _context.GroupMembers
                 .Include(gm => gm.User)
                 .Include(gm => gm.Group)

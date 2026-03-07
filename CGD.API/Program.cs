@@ -53,6 +53,7 @@ builder.Services.AddAuthentication(options =>
     {
         OnMessageReceived = context =>
         {
+            // Permite autenticar por cookie HttpOnly para suportar frontend web com credenciais.
             var cookie = context.Request.Cookies["AuthToken"];
             if (!string.IsNullOrEmpty(cookie))
             {
@@ -70,6 +71,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
+            // CORS restrito ao frontend local com credenciais para envio do cookie JWT.
             .WithOrigins("http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod()
@@ -82,6 +84,7 @@ app.UseCors("AllowFrontend");
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// Ordem de seguranca: autentica identidade, aplica autorizacao e padroniza erros antes dos controllers.
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ExceptionMiddleware>();

@@ -32,6 +32,7 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
 
     public async Task<IReadOnlyList<Expense>> GetByUserIdFilteredAsync(Guid userId, ExpenseFilter filter)
     {
+        // AsNoTracking reduz custo de leitura em consulta somente de visualizacao.
         var query = _context.Expenses
             .AsNoTracking()
             .Include(e => e.User)
@@ -39,6 +40,7 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
             .Include(e => e.Category)
             .Where(e => e.UserId == userId);
 
+        // Filtros opcionais sao aplicados incrementalmente para gerar uma unica query SQL.
         if (filter.CategoryId.HasValue)
             query = query.Where(e => e.CategoryId == filter.CategoryId.Value);
 
@@ -83,6 +85,7 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
 
     public async Task DeleteByUserOrDebtorIdAsync(Guid userId)
     {
+        // Cascata logica para remover despesas vinculadas ao usuario antes da exclusao da pessoa.
         var expenses = await _context.Expenses
             .Where(e => e.UserId == userId || e.DebtorId == userId)
             .ToListAsync();
@@ -104,6 +107,7 @@ public class ExpenseRepository(CGDDbContext context) : IExpenseRepository
     public async Task<IReadOnlyList<Expense>> GetByDebtorIdsAsync(List<Guid> debtorsIds)
     {
         var allExpensesToTest = await _context.Expenses.ToListAsync();
+        // Inclui categoria porque a camada APP usa finalidade/nome da categoria nas agregacoes.
         return await _context.Expenses
             .Where(e => e.DebtorId.HasValue && debtorsIds.Contains(e.DebtorId.Value))
             .Include(e => e.Category)

@@ -37,6 +37,7 @@ public class ExpenseCategoryService(
 
     public async Task<IReadOnlyList<CategoryDto>> GetPagedByUserIdAsync(Guid userId, int page, int pageSize)
     {
+        // Limites defensivos para evitar pagina invalida e consultas muito grandes.
         if (page <= 0)
             throw new ArgumentException("Page deve ser maior que zero.");
         if (pageSize <= 0 || pageSize > 100)
@@ -48,6 +49,7 @@ public class ExpenseCategoryService(
 
     public async Task<CategoryDto> UpdateAsync(Guid id, CategoryCreateDto dto)
     {
+        // Diferencia update invalido (categoria inexistente) de update valido.
         var category = await _categoryRepository.GetByIdAsync(id);
         if (category is null)
             throw new ArgumentException("Categoria não encontrada");
@@ -62,6 +64,7 @@ public class ExpenseCategoryService(
 
     public async Task DeleteAsync(Guid id)
     {
+        // Delete so ocorre quando a categoria existe; caso contrario retorna erro de dominio.
         var category = await _categoryRepository.GetByIdAsync(id);
         if (category is null)
             throw new ArgumentException("Categoria não encontrada");
@@ -71,13 +74,13 @@ public class ExpenseCategoryService(
 
     public async Task<CategoryTotalsResponseDto> GetCategoryTotalsAsync(Guid userId)
     {
-        // Todas as categorias para o user
+        // Base de categorias no escopo do usuario dono das despesas.
         var categories = await _categoryRepository.GetByUserIdAsync(userId);
 
-        // todas as epenses do user
+        // Totalizacao parte das despesas do usuario para evitar cruzamento entre owners.
         var expenses = await _expenseRepository.GetByUserIdAsync(userId);
 
-        // pega grupo por expense
+        // Calcula receita, despesa e saldo por categoria em cima do subconjunto filtrado.
         var categoryTotals = categories.Select(category =>
         {
             var categoryExpenses = expenses.Where(e => e.CategoryId == category.Id).ToList();
@@ -100,7 +103,7 @@ public class ExpenseCategoryService(
             };
         }).ToList();
 
-        // Calc total
+        // Compoe total geral a partir dos totais por categoria.
         var grandTotalIncome = categoryTotals.Sum(c => c.TotalIncome);
         var grandTotalExpenses = categoryTotals.Sum(c => c.TotalExpenses);
         var grandBalance = grandTotalIncome - grandTotalExpenses;

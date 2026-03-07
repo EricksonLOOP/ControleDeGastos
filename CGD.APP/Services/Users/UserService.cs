@@ -34,6 +34,7 @@ public class UserService(
     public async Task<UserDto> CreateSimpleAsync(UserSimpleCreateDto dto, Guid groupAdmin)
     {
         var user = UserMapper.SimpleCreateToEntity(dto);
+        // Idade e derivada da data de nascimento para manter consistencia com regras de menoridade.
         user.Age = CalculateAge(user.BirthDate);
         var userCreated = await _userRepository.AddAsync(user);
         var groupToAdd = await _groupService.GetByIdAsync(dto.GroupId, groupAdmin);
@@ -47,7 +48,7 @@ public class UserService(
         if (pageSize <= 0 || pageSize > 100)
             throw new ArgumentException("PageSize deve estar entre 1 e 100.");
 
-        // Buscar grupos do usuário logado
+        // Visibilidade: apenas pessoas que compartilham grupos com o usuario autenticado.
         var userGroups = await _groupService.GetAllAsync(userId);
         var groupMembers = userGroups
             .SelectMany(g => g.Members)
@@ -59,7 +60,7 @@ public class UserService(
         var allMemberships = groupMembers;
 
 
-        // Pegar usuários únicos
+        // Pagina em cima de IDs distintos para evitar repeticao de usuario em multiplos grupos.
         var userIds = allMemberships.Select(m => m.UserId).Distinct().ToList();
         // Paginar
         var pagedUserIds = userIds.Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -95,6 +96,7 @@ public class UserService(
 
     public async Task<UserDto> CreateAsync(UserCreateDto dto)
     {
+        // Regra de negocio: email deve ser unico para garantir autenticacao deterministica.
         var existingUser = await _userRepository.GetByEmailAsync(dto.Email);
         if (existingUser is not null)
             throw new ArgumentException("Email já cadastrado");
@@ -112,7 +114,7 @@ public class UserService(
             throw new UserNotFoundException();
 
         user.Name = dto.Name;
-        // Se atualizar data de nascimento, atualizar idade
+        // Se alterar BirthDate, recalcula idade para evitar divergencia de dado derivado.
         if (dto is { BirthDate: var birthDate })
         {
             user.BirthDate = birthDate;
@@ -125,6 +127,7 @@ public class UserService(
     }
     private static int CalculateAge(DateTime birthDate)
     {
+        // Ajusta idade considerando se o aniversario ja ocorreu no ano corrente.
         var today = DateTime.Today;
         var age = today.Year - birthDate.Year;
         if (birthDate.Date > today.AddYears(-age)) age--;
@@ -136,16 +139,17 @@ public class UserService(
         if (user is null)
             throw new UserNotFoundException();
 
-        // Regra de negócio: ao excluir a pessoa, remover transações relacionadas.
+        // Cascata logica: remove despesas onde pessoa e dona ou devedora antes de excluir usuario.
         await _expenseRepository.DeleteByUserOrDebtorIdAsync(id);
         await _userRepository.DeleteAsync(user);
     }
 
     public async Task<UserTotalsResponseDto> GetUserTotalsAsync(Guid adminUserId)
     {
+        // Escopo dos totais: usuarios enriquecidos pertencentes aos grupos administrados pelo admin.
         var usersSource = await _userRepository.GetEnrichedUsers(adminUserId);
 
-        // Se não houver membros enriquecidos, ao menos mantém o admin no retorno.
+        // Fallback: se nao houver membros visiveis, mantem ao menos o proprio admin no consolidado.
         if (usersSource.Count == 0)
         {
             var adminUser = await _userRepository.GetByIdAsync(adminUserId);
@@ -167,6 +171,7 @@ public class UserService(
             .GroupBy(e => e.DebtorId!.Value)
             .ToDictionary(g => g.Key, g => g.ToList());
 
+        // Receita/despesa por pessoa e sempre agregada pelo debtor para refletir quem participou do gasto.
         var userTotalsList = usersSource
             .DistinctBy(u => u.Id)
             .Select(user =>
@@ -194,6 +199,7 @@ public class UserService(
             .OrderBy(u => u.Name)
             .ToList();
 
+        // Overall agrega os totais individuais para manter consistencia entre cards e tabela detalhada.
         var overallTotals = new OverallTotalsDto
         {
             TotalIncome = userTotalsList.Sum(u => u.TotalIncome),
@@ -210,6 +216,7 @@ public class UserService(
 
     public async Task<List<EnrichedUserDto>> GetAllEnrichedUsers(Guid adminGroupId)
     {
+        // Composicao de resposta: usuario + primeiro grupo visivel + despesas do usuario enriquecido.
         var enrichedUsers = await _userRepository.GetEnrichedUsers(adminGroupId);
 
         var usersId = enrichedUsers.Select(u => u.Id).ToList();

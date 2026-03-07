@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CGD.API.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d77e0be525596133e2a1c92c2cc7acad586ddcd6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f713491218032a60d19bea23e48d9c173b56a44")]
 [assembly: System.Reflection.AssemblyProductAttribute("CGD.API.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CGD.API.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

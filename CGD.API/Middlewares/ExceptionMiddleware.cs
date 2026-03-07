@@ -24,6 +24,7 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
 
     private static Task HandleExceptionAsync(HttpContext context, Exception ex)
     {
+        // Mapa central de excecoes de dominio para status HTTP previsiveis.
         var statusCode = ex switch
         {
             UserNotFoundException => HttpStatusCode.NotFound,
@@ -37,6 +38,7 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
             _ => HttpStatusCode.InternalServerError
         };
 
+        // Payload unico de erro para facilitar consumo no frontend e observabilidade.
         var response = new ErrorResponse
         {
             StatusCode = (int)statusCode,

@@ -13,6 +13,7 @@ public class UserSimpleCreateDto
 
     [JsonPropertyName("birthDate")]
     [Required(ErrorMessage = "Data de nascimento é obrigatória")]
+    // Idade e derivada no service a partir de BirthDate; nao deve vir do cliente.
     public DateTime BirthDate { get; set; }
     [JsonPropertyName("groupId")]
     [Required(ErrorMessage = "É necessário informar um grupo")]

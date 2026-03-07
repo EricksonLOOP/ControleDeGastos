@@ -24,6 +24,7 @@ public class ExpenseCategoryRepository(CGDDbContext context) : IExpenseCategoryR
 
     public async Task<IReadOnlyList<ExpenseCategory>> GetByUserIdAsync(Guid userId)
     {
+        // Ownership por UserId: cada usuario enxerga apenas suas categorias.
         return await _context.ExpenseCategories
             .AsNoTracking()
             .Where(c => c.UserId == userId)
@@ -34,6 +35,7 @@ public class ExpenseCategoryRepository(CGDDbContext context) : IExpenseCategoryR
     public async Task<IReadOnlyList<ExpenseCategory>> GetPagedByUserIdAsync(Guid userId, int page, int pageSize)
     {
         var skip = (page - 1) * pageSize;
+        // Mesmo escopo de ownership aplicado na consulta paginada.
         return await _context.ExpenseCategories
             .AsNoTracking()
             .Where(c => c.UserId == userId)

@@ -17,6 +17,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
+        // Ownership da categoria nasce da claim do usuario autenticado, nao do payload.
         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier || c.Type == "sub");
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
             return Unauthorized();
@@ -43,6 +44,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     public async Task<IActionResult> GetByUserId(Guid userId)
     {
         var authUserId = GetUserId();
+        // Forbid evita leitura cruzada de categorias entre usuarios autenticados diferentes.
         if (authUserId != userId)
             return Forbid();
 
@@ -54,6 +56,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     public async Task<IActionResult> GetPagedByUserId(Guid userId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         var authUserId = GetUserId();
+        // Mesmo escopo de ownership aplicado na consulta paginada.
         if (authUserId != userId)
             return Forbid();
 
@@ -65,6 +68,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     public async Task<IActionResult> GetCategoryTotals(Guid userId)
     {
         var authUserId = GetUserId();
+        // Totais por categoria so podem ser consultados pelo proprio dono do escopo.
         if (authUserId != userId)
             return Forbid();
 
@@ -90,6 +94,7 @@ public class CategoriesController(IExpenseCategoryService categoryService) : Con
     }
     private Guid GetUserId()
     {
+        // Padrao de claim suportado: NameIdentifier ou sub.
         var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier || c.Type == "sub");
         if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
             throw new UnauthorizedAccessException();
