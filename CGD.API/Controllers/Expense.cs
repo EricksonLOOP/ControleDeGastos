@@ -42,6 +42,17 @@ public class ExpensesController(IExpenseService expenseService) : ControllerBase
         return Ok(expenses);
     }
 
+    [HttpGet("user/{userId:guid}/totals")]
+    public async Task<IActionResult> GetTotalsByUserId(Guid userId, [FromQuery] ExpenseFilterDto filter)
+    {
+        var authUserId = GetUserId();
+        if (authUserId != userId)
+            return Forbid();
+
+        var totals = await _expenseService.GetTotalsByUserIdAsync(userId, filter);
+        return Ok(totals);
+    }
+
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] ExpenseUpdateDto dto)
     {

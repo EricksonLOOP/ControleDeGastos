@@ -147,4 +147,30 @@ public class ExpenseService(
 
         return expenses.Select(ExpenseMapper.ToDto).ToList();
     }
+
+    public async Task<ExpenseTotalsResponseDto> GetTotalsByUserIdAsync(Guid userId, ExpenseFilterDto filter)
+    {
+        // Reuse filtering logic to obtain the subset and aggregate on server side.
+        var expenseFilter = new Domain.Filters.ExpenseFilter
+        {
+            CategoryId = filter.CategoryId,
+            StartDate = filter.StartDate,
+            EndDate = filter.EndDate,
+            MinAmount = filter.MinAmount,
+            MaxAmount = filter.MaxAmount,
+            DescriptionContains = filter.DescriptionContains?.Trim()
+        };
+
+        var expenses = await _expenseRepository.GetByUserIdFilteredAsync(userId, expenseFilter);
+
+        var totalIncome = expenses.Where(e => e.Type == Domain.Entities.TransactionType.Income).Sum(e => e.Amount);
+        var totalExpenses = expenses.Where(e => e.Type == Domain.Entities.TransactionType.Expense).Sum(e => e.Amount);
+
+        return new ExpenseTotalsResponseDto
+        {
+            TotalIncome = totalIncome,
+            TotalExpenses = totalExpenses,
+            Balance = totalIncome - totalExpenses
+        };
+    }
 }

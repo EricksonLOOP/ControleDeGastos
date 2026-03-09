@@ -11,4 +11,5 @@ public interface IExpenseService
     Task<ExpenseDto> UpdateAsync(Guid expenseId, Guid adminId, ExpenseUpdateDto dto);
     Task DeleteAsync(Guid id);
     Task<IReadOnlyList<ExpenseDto>> GetAll(Guid userId);
+    Task<ExpenseTotalsResponseDto> GetTotalsByUserIdAsync(Guid userId, ExpenseFilterDto filter);
 }
