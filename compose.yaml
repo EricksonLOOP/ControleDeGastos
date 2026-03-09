@@ -13,6 +13,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=cgd_db;Username=postgres;Password=postgres
+      - Jwt__SecretKey=v7QmC9s2HhRkZJ0cM0H8g3VtA2qX5wFjYxk9L6Pp1D8=
     networks:
       - cgd-network
 
