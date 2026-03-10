@@ -83,10 +83,10 @@ A pasta `Docs` contém arquivos detalhados:
 
 | Nome          | Descrição                                   | Acesso Rápido                  |
 | ------------- | ------------------------------------------- | ------------------------------ |
-| Arquitetura   | Informações sobre as decisões arquiteturais | [Ler agora](./ARCHITECTURE.md) |
-| Controladores | Descrição dos endpoints                     | [Ler agora](./Controllers.md)  |
-| Serviços      | Regras de negócio e injeção                 | [Ler agora](./SERVICES.md)     |
-| Testes        | Estratégia de testes e exemplos             | [Ler agora](./TESTING.md)      |
+| Arquitetura   | Informações sobre as decisões arquiteturais | [Ler agora](./Docs/ARCHITECTURE.md) |
+| Controladores | Descrição dos endpoints                     | [Ler agora](./Docs/Controllers.md)  |
+| Serviços      | Regras de negócio e injeção                 | [Ler agora](./Docs/SERVICES.md)     |
+| Testes        | Estratégia de testes e exemplos             | [Ler agora](./Docs/TESTING.md)      |
 
 ## Autor
 
