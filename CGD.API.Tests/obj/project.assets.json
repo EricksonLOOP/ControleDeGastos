@@ -2737,34 +2737,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\EricksonDias\\.nuget\\packages\\": {}
+    "C:\\Users\\erick\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
       "projectName": "CGD.API.Tests",
-      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
-      "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API.Tests\\obj\\",
+      "projectPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.API.Tests\\CGD.API.Tests.csproj",
+      "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.API.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.API\\CGD.API.csproj"
+            "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.API\\CGD.API.csproj": {
+              "projectPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.API\\CGD.API.csproj"
             }
           }
         }
@@ -2778,8 +2776,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "10.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -2819,26 +2816,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -15,8 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter(System.Text.Json.JsonNamingPolicy.CamelCase, allowIntegerValues: true));
+        options.JsonSerializerOptions.Converters.Add(
+            new System.Text.Json.Serialization.JsonStringEnumConverter(
+                System.Text.Json.JsonNamingPolicy.CamelCase,
+                allowIntegerValues: true
+            )
+        );
     });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -49,11 +55,11 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ClockSkew = TimeSpan.Zero
     };
+
     options.Events = new JwtBearerEvents
     {
         OnMessageReceived = context =>
         {
-            // Permite autenticar por cookie HttpOnly para suportar frontend web com credenciais.
             var cookie = context.Request.Cookies["AuthToken"];
             if (!string.IsNullOrEmpty(cookie))
             {
@@ -71,25 +77,49 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
-            // CORS restrito ao frontend local com credenciais para envio do cookie JWT.
-            .WithOrigins("http://localhost:3000")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials());
+            .WithOrigins(
+    "http://localhost:3000",
+    "https://controledegastos.oppodev.site"
+    )
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials());
 });
 
 var app = builder.Build();
 
+// aplica automaticamente as migrations pendentes do Entity Framework
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<CGDDbContext>();
+
+    var retries = 10;
+    while (retries > 0)
+    {
+        try
+        {
+            db.Database.Migrate();
+            break;
+        }
+        catch
+        {
+            retries--;
+            Thread.Sleep(3000);
+        }
+    }
+}
+
 app.UseCors("AllowFrontend");
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// Ordem de seguranca: autentica identidade, aplica autorizacao e padroniza erros antes dos controllers.
+// Ordem de segurança
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
-
 
 app.Run();

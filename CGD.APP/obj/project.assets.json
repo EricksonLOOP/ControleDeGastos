@@ -813,37 +813,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\EricksonDias\\.nuget\\packages\\": {}
+    "C:\\Users\\erick\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
+      "projectUniqueName": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
       "projectName": "CGD.APP",
-      "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
-      "packagesPath": "C:\\Users\\EricksonDias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.APP\\obj\\",
+      "projectPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.APP\\CGD.APP.csproj",
+      "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.APP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\EricksonDias\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
+            "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj": {
+              "projectPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.CrossCutting\\CGD.CrossCutting.csproj"
             },
-            "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
-              "projectPath": "C:\\Users\\EricksonDias\\Documents\\Projetos\\Controle de Gastos\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
+            "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj": {
+              "projectPath": "C:\\Users\\erick\\OneDrive\\Documentos\\GitHub\\ControleDeGastos\\CGD.Domain\\CGD.Domain.csproj"
             }
           }
         }
@@ -878,7 +876,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.415/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

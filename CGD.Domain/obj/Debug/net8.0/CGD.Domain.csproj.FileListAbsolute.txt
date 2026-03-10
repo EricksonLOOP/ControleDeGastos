@@ -21,3 +21,15 @@ C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\refint\CGD.Domain.dll
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.pdb
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\ref\CGD.Domain.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\bin\Debug\net8.0\CGD.Domain.deps.json
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\bin\Debug\net8.0\CGD.Domain.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\bin\Debug\net8.0\CGD.Domain.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.AssemblyInfoInputs.cache
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.AssemblyInfo.cs
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.csproj.CoreCompileInputs.cache
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.sourcelink.json
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\refint\CGD.Domain.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\CGD.Domain.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.Domain\obj\Debug\net8.0\ref\CGD.Domain.dll

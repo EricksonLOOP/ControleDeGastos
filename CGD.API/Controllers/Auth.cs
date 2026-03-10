@@ -36,7 +36,8 @@ public class AuthController(
         {
             HttpOnly = true,
             Secure = !Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) ?? true,
-            SameSite = SameSiteMode.Strict,
+            SameSite = SameSiteMode.None,
+            Domain = ".oppodev.site",
             Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationMinutes),
             Path = "/"
         };
@@ -71,7 +72,8 @@ public class AuthController(
         {
             HttpOnly = true,
             Secure = !Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) ?? true,
-            SameSite = SameSiteMode.Strict,
+            SameSite = SameSiteMode.None,
+            Domain = ".oppodev.site",
             Path = "/"
         });
         return NoContent();

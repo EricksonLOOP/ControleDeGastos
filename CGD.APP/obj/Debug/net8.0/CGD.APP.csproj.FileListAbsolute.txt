@@ -37,3 +37,23 @@ C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\refint\CGD.APP.dll
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.pdb
 C:\Users\EricksonDias\Documents\Projetos\Controle de Gastos\ControleDeGastos\CGD.APP\obj\Debug\net8.0\ref\CGD.APP.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.deps.json
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.APP.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.CrossCutting.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Domain.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Infra.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.CrossCutting.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Domain.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\bin\Debug\net8.0\CGD.Infra.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.AssemblyReference.cache
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.AssemblyInfoInputs.cache
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.AssemblyInfo.cs
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.CoreCompileInputs.cache
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.sourcelink.json
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.csproj.Up2Date
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\refint\CGD.APP.dll
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\CGD.APP.pdb
+C:\Users\erick\OneDrive\Documentos\GitHub\ControleDeGastos\CGD.APP\obj\Debug\net8.0\ref\CGD.APP.dll
