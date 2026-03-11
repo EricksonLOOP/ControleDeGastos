@@ -3,6 +3,7 @@ using System;
 using CGD.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CGD.Infra.Migrations
 {
     [DbContext(typeof(CGDDbContext))]
-    partial class CGDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260311215641_UserNameCanBeNull")]
+    partial class UserNameCanBeNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,6 +175,7 @@ namespace CGD.Infra.Migrations
                         .HasColumnType("character varying(150)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 

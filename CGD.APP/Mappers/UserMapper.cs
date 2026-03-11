@@ -22,8 +22,6 @@ public abstract class UserMapper
         return new User
         {
             Id = Guid.NewGuid(),
-            Name = dto.Name,
-            BirthDate = dto.BirthDate,
             Email = dto.Email,
             PasswordHash = passwordHash
         };

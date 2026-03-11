@@ -11,9 +11,9 @@ public class User
     [Key]
     public Guid Id { get; set; }
 
-    [Required]
+ 
     [MaxLength(200)]
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
 
     [Required]
     // Age e dado derivado de BirthDate, persistido para consultas/ordenacoes rapidas.

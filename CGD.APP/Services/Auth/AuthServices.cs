@@ -28,7 +28,7 @@ public class AuthServices(IUserRepository userRepository, PasswordHash passwordH
     {
         // Fluxo de autenticacao: busca usuario, valida hash e retorna Unauthorized em credencial invalida.
         var user = await _userRepository.GetByEmailAsync(authLoginDto.email) ?? throw new UserNotFoundException();
-        if (!_passwordHash.Verify(authLoginDto.Password, user.PasswordHash)) throw new UnauthorizedAccessException();
+        if (!_passwordHash.Verify(authLoginDto.Password, user.PasswordHash)) throw new UnauthorizedAccessException("Credenciais inválidas");
 
         return UserMapper.ToDto(user);
     }

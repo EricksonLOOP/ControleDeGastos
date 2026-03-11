@@ -75,7 +75,7 @@ namespace CGD.API.Tests
         [Fact]
         public async Task SignupUser_ReturnsCreated_WhenModelValid()
         {
-            var signupDto = new AuthSignupDto { Email = "a@b.com", Name = "Name", Password = "pwd" };
+            var signupDto = new AuthSignupDto { Email = "a@b.com", Password = "pwd" };
             var mockAuth = new Mock<IAuthServices>();
             mockAuth.Setup(s => s.SignupAsync(signupDto)).Returns(Task.CompletedTask);
 

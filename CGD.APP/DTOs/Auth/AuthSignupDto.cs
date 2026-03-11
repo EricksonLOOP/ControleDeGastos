@@ -5,15 +5,6 @@ namespace CGD.APP.DTOs.Auth;
 
 public class AuthSignupDto
 {
-    [JsonPropertyName("name")]
-    [Required(ErrorMessage = "Username é obrigatório")]
-    [MinLength(3, ErrorMessage = "Username deve ter no mínimo 3 caracteres")]
-    [MaxLength(200, ErrorMessage = "Username deve ter no máximo 200 caracteres")]
-    public string Name { get; set; }
-
-    [JsonPropertyName("birthDate")]
-    [Required(ErrorMessage = "Data de nascimento é obrigatória")]
-    public DateTime BirthDate { get; set; }
 
     [Required(ErrorMessage = "Email é obrigatório")]
     [EmailAddress(ErrorMessage = "Email inválido")]
