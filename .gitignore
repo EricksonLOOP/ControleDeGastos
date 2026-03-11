@@ -1,14 +1,21 @@
-# Build results
+# Build
 bin/
 obj/
 
-# User-specific files
-*.user
-*.suo
-
-# Rider / VSCode
+# Visual Studio
+.vs/
 .vscode/
+
+# Rider / IntelliJ
 .idea/
 
 # Logs
 *.log
+
+# User files
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
